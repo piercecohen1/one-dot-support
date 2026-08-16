@@ -3,53 +3,46 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Support for One Dot, a private mood tracker for iPhone and iPad." />
-    <title>One Dot Support</title>
+    <meta
+      name="description"
+      content="One Dot is the simplest possible mood tracking app for iPhone and iPad."
+    />
+    <title>One Dot</title>
     <link rel="icon" href="icon.png" />
     <link rel="apple-touch-icon" href="icon.png" />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
-    <main>
-      <header>
-        <img class="app-icon" src="icon.png" alt="One Dot app icon" />
-        <div>
-          <p class="eyebrow">One Dot</p>
-          <h1>Support</h1>
+  <body class="landing">
+    <div class="landing-shell">
+      <main class="landing-main">
+        <a
+          class="app-identity"
+          href="https://apps.apple.com/app/id6801383350"
+          aria-label="View One Dot on the App Store"
+        >
+          <img class="landing-icon" src="icon.png" alt="" />
+          <span class="landing-name">One Dot</span>
+        </a>
+
+        <div class="landing-copy">
+          <p>
+            The simplest possible mood tracking app. No decision fatigue. No feature bloat.
+            <span class="closing-line">Just one dot.</span>
+          </p>
         </div>
-      </header>
 
-      <section aria-labelledby="help-heading">
-        <h2 id="help-heading">Need help?</h2>
-        <p>
-          Email <a href="mailto:support@onedotmood.app?subject=One%20Dot%20Support">support@onedotmood.app</a>.
-          Please include what happened and which version of iOS or iPadOS you are using.
-        </p>
-      </section>
+        <a class="store-link" href="https://apps.apple.com/app/id6801383350">
+          View on the App Store
+          <span aria-hidden="true">↗</span>
+        </a>
+      </main>
 
-      <section aria-labelledby="data-heading">
-        <h2 id="data-heading">Your data</h2>
-        <p>
-          One Dot keeps your mood history on your devices. If you enable iCloud for One Dot,
-          Apple syncs it through your private iCloud database. We cannot see it.
-        </p>
-        <p>
-          You can export your mood history from Settings inside the app. One Dot has no account,
-          analytics, advertising, or third-party data sharing.
-        </p>
-      </section>
-
-      <section aria-labelledby="medical-heading">
-        <h2 id="medical-heading">A note about medical care</h2>
-        <p>
-          One Dot is a personal tracking tool. It is not a diagnostic device or a substitute for
-          professional care.
-        </p>
-      </section>
-
-      <nav aria-label="Legal">
-        <a href="privacy.html">Privacy Policy</a>
-      </nav>
-    </main>
+      <footer class="landing-footer">
+        <nav aria-label="One Dot">
+          <a href="support.html">Support</a>
+          <a href="privacy.html">Privacy</a>
+        </nav>
+      </footer>
+    </div>
   </body>
 </html>
