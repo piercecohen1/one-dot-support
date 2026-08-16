@@ -6,6 +6,8 @@
   --secondary: #6e6a64;
   --accent: #536b62;
   --border: #ded8cf;
+  --focus: #536b62;
+  --shadow: rgb(0 0 0 / 0.12);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -16,11 +18,16 @@
     --secondary: #b8b2a9;
     --accent: #a9c8bb;
     --border: #3b3c38;
+    --focus: #a9c8bb;
   }
 }
 
 * {
   box-sizing: border-box;
+}
+
+html {
+  background: var(--canvas);
 }
 
 body {
@@ -32,24 +39,144 @@ body {
   line-height: 1.6;
 }
 
-main {
+a {
+  color: var(--accent);
+  font-weight: 650;
+  text-underline-offset: 0.15em;
+}
+
+a:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 4px;
+}
+
+.landing-shell {
+  display: grid;
+  min-height: 100svh;
+  grid-template-rows: minmax(0, 1fr) auto;
+}
+
+.landing-main {
+  display: flex;
+  width: min(760px, calc(100% - 40px));
+  margin: auto;
+  padding: clamp(72px, 12vh, 132px) 0 64px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.app-identity {
+  display: inline-flex;
+  border-radius: 32px;
+  color: var(--text);
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  text-decoration: none;
+}
+
+.landing-icon {
+  width: clamp(112px, 20vw, 152px);
+  height: auto;
+  border-radius: 24%;
+  box-shadow: 0 18px 54px var(--shadow);
+  transition:
+    transform 240ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 240ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.app-identity:hover .landing-icon {
+  box-shadow: 0 24px 64px var(--shadow);
+  transform: translateY(-3px) scale(1.015);
+}
+
+.landing-name {
+  font-size: 1.05rem;
+  font-weight: 720;
+  letter-spacing: -0.015em;
+}
+
+.landing-copy {
+  margin-top: clamp(42px, 7vh, 68px);
+}
+
+.landing-copy p {
+  max-width: 590px;
+  margin: 0 auto;
+  color: var(--secondary);
+  font-size: clamp(1.05rem, 2.5vw, 1.3rem);
+  line-height: 1.55;
+}
+
+.closing-line {
+  white-space: nowrap;
+}
+
+.store-link {
+  display: inline-flex;
+  min-height: 52px;
+  margin-top: 40px;
+  padding: 12px 20px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  align-items: center;
+  gap: 9px;
+  color: var(--text);
+  text-decoration: none;
+  transition:
+    transform 220ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.store-link:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.landing-footer {
+  padding: 24px 20px 32px;
+}
+
+.landing-footer nav,
+.content-nav {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+
+.landing-footer a,
+.content-nav a {
+  color: var(--secondary);
+  font-size: 0.86rem;
+  font-weight: 600;
+}
+
+.content-main {
   width: min(680px, calc(100% - 40px));
   margin: 0 auto;
   padding: 72px 0;
 }
 
-header {
+.content-header {
   display: flex;
   align-items: center;
   gap: 22px;
   margin-bottom: 48px;
 }
 
+.app-icon-home {
+  display: block;
+  border-radius: 20px;
+  line-height: 0;
+}
+
 .app-icon {
   width: 88px;
   height: 88px;
   border-radius: 20px;
-  box-shadow: 0 9px 30px rgb(0 0 0 / 12%);
+  box-shadow: 0 9px 30px var(--shadow);
 }
 
 .eyebrow {
@@ -66,7 +193,7 @@ h2 {
   line-height: 1.18;
 }
 
-h1 {
+.content-main h1 {
   margin: 0;
   font-size: clamp(2.1rem, 8vw, 3.2rem);
 }
@@ -98,15 +225,15 @@ p + p {
   font-size: 0.9rem;
 }
 
-a {
-  color: var(--accent);
-  font-weight: 650;
-  text-underline-offset: 0.15em;
+.content-nav {
+  margin-top: 32px;
 }
 
-nav {
-  margin-top: 32px;
-  text-align: center;
+@media (prefers-reduced-motion: reduce) {
+  .landing-icon,
+  .store-link {
+    transition: none;
+  }
 }
 
 @media (max-width: 520px) {
@@ -114,18 +241,34 @@ nav {
     font-size: 17px;
   }
 
-  main {
+  .landing-main {
+    padding-top: 64px;
+  }
+
+  .landing-copy {
+    margin-top: 38px;
+  }
+
+  .landing-footer {
+    padding-bottom: 24px;
+  }
+
+  .content-main {
     padding: 42px 0;
   }
 
-  header {
+  .content-header {
     align-items: flex-start;
+  }
+
+  .app-icon-home,
+  .app-icon {
+    border-radius: 17px;
   }
 
   .app-icon {
     width: 72px;
     height: 72px;
-    border-radius: 17px;
   }
 
   .effective-date {
